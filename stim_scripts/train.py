@@ -4,7 +4,9 @@ A basic training module where melodies are played for you, and you have a few se
 The melodies are stored in the wav folder. The program loops through the melodies in order (see readme for updated order).
 
 ABLETON MUST BE ACTIVE IN THE BACKGROUND TO SYNTHESIZE SOUND, otherwise you hear nothing (sound has nothing to do with the python stuff though)
-Requires a midi keyboard to be plugged into the computer (the one I'm using is called V49 Out)
+Requires a midi keyboard to be plugged into the computer
+
+In our lab the big MIDI keyboard is called V49 Out and the small keyboard is "Launchkey Mini MK3 MIDI Port"
 
 """
 
@@ -16,13 +18,23 @@ import sys
 import os
 from pathlib import Path
 
+mode = 'wurli' #classic or wurli - determines which sample melodies are played. Defaults to wurli
+MIDI_port = "Launchkey Mini MK3 MIDI Port" #"Launchkey Mini MK3 MIDI Port" (small keyboard) or "V49 Out"  (the big MIDI keyboard)
+
+
+
 if len(sys.argv) < 3:
     print("Usage: python train.py <csv_subject>")
 
 subj_name = sys.argv[1]
 
 #setting wav path
-folder_path = Path('./wav/')
+if mode == 'classic':
+    folder_path = Path('./wav_classic/')
+elif mode == 'wurli':
+    folder_path = Path('./wav_wurli/')
+else:
+    folder_path = Path('./wav_wurli/')
 
 # Initialize Pygame
 pygame.init()
@@ -35,7 +47,22 @@ pygame.display.set_caption("Melody training")
 
 
 # Set up MIDI recording
-midi_input = mido.open_input("V49 Out", callback=None)  # Replace with the actual MIDI device name
+#midi_input = mido.open_input("V49 Out", callback=None)  # Replace with the actual MIDI device name
+
+def get_available_ports():
+    return mido.get_input_names()
+
+# Set up MIDI recording
+available_ports = get_available_ports()
+
+if MIDI_port in available_ports:
+    midi_input = mido.open_input(MIDI_port, callback=None)
+    print(f"Connected to MIDI port: {MIDI_port}")
+else:
+    print(f"The specified MIDI port '{MIDI_port}' is unavailable.")
+    print("Available MIDI ports:", available_ports)
+    sys.exit()
+
 
 # Create a CSV file for recording
 #csv_filename = "midi_record.csv"
@@ -106,7 +133,7 @@ prompt_rect = prompt_text.get_rect(center=(screen_width // 2, screen_height // 2
 trial_number = 1
 notes_vector = []
 
-num_cycles = 5
+num_cycles = 3
 curr_cycle = 0
 
 paused = False
@@ -185,7 +212,8 @@ while curr_cycle < num_cycles:
 
                     # Record MIDI events
                     for msg in midi_input.iter_pending():
-                        if msg.type == "note_on":
+                        if msg.type == "note_on" and msg.velocity > 0: #the launchkey keyboard has a double of each note_on message where the velocity is 0
+                            #print(msg)
                             notes_vector.append(msg.note)
 
                 # Save notes_vector to CSV and reset for the next trial
