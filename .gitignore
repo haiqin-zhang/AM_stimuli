@@ -1,6 +1,11 @@
 spare_files/
-ableton templates/piano experiment Project/Backup/
-ableton templates/piano experiment Project/Ableton Project Info/
-ableton templates/piano experiment Project/met_clicks/
+
+ableton_templates/piano experiment Project/Backup/
+ableton_templates/piano experiment Project/Ableton Project Info/
+ableton_templates/piano experiment Project/met_clicks/
+ableton_templates/piano experiment Project/old_files/
+ableton_templates/piano experiment Project/Icon/
+ableton_templates/piano experiment Project/Samples/
+
 *.pages
 .DS_Store*

@@ -11,10 +11,11 @@ You need to have the MIDI keyboard plugged in and Ableton running in another win
 The order of melody presentation in the training is:
 cd
 cde
+ef
 def
 fg
 efg
 cdef
 cdefg
 
-The training phase loops through all files 5 times and takes approx 1 hour to complete
+The training phase loops through all files twice in the same order and takes approx 30 mins to complete

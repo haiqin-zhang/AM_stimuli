@@ -133,7 +133,7 @@ prompt_rect = prompt_text.get_rect(center=(screen_width // 2, screen_height // 2
 trial_number = 1
 notes_vector = []
 
-num_cycles = 3
+num_cycles = 2
 curr_cycle = 0
 
 paused = False
@@ -146,7 +146,7 @@ while curr_cycle < num_cycles:
 
         
         section_text = 'You may now take a short break if you wish. Press the space bar to continue.'
-        block_text =  f'You are starting set {set_num}/8, block {curr_cycle+1}/5'
+        block_text =  f'You are starting set {set_num}/8, block {curr_cycle+1}/{num_cycles}'
 
         # Set up font and text for the intro screen
         intro_font = pygame.font.Font(None, 36)
