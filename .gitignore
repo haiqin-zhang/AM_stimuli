@@ -8,4 +8,4 @@ ableton_templates/piano experiment Project/Icon/
 ableton_templates/piano experiment Project/Samples/
 
 *.pages
-.DS_Store*
+**/.DS_Store
