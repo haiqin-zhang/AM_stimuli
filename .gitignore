@@ -1,4 +1,6 @@
 spare_files/
+printouts/
+stim_scripts/train_analysis/responses_pilot/
 
 ableton_templates/piano experiment Project/Backup/
 ableton_templates/piano experiment Project/Ableton Project Info/
@@ -7,5 +9,9 @@ ableton_templates/piano experiment Project/old_files/
 ableton_templates/piano experiment Project/Icon/
 ableton_templates/piano experiment Project/Samples/
 
+
 *.pages
+
+
 **/.DS_Store
+**__pycache__
