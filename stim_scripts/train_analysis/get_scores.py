@@ -15,7 +15,7 @@ numcycles = 2
 exampleset = midi_target('../raw_training_files_wurli/passive listening.mid')
 fullset = exampleset*numcycles
 
-root_dir = "/Users/cindyzhang/Documents/M2/Audiomotor_Piano/AM_stimuli/stim_scripts/train_analysis/responses"
+root_dir = "/Users/cindyzhang/Documents/M2/Audiomotor_Piano/AM_stimuli/stim_scripts/train_analysis/raw_keystrokes"
 output_dir = "/Users/cindyzhang/Documents/M2/Audiomotor_Piano/AM_stimuli/stim_scripts/train_analysis/scores"
 
 

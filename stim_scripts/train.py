@@ -18,9 +18,11 @@ import sys
 import os
 from pathlib import Path
 
+
+#PARAMETERS
 mode = 'wurli' #classic or wurli - determines which sample melodies are played. Defaults to wurli
 MIDI_port = "Launchkey Mini MK3 MIDI Port" #"Launchkey Mini MK3 MIDI Port" (small keyboard) or "V49 Out"  (the big MIDI keyboard)
-
+num_cycles = 2
 
 
 if len(sys.argv) < 3:
@@ -66,7 +68,7 @@ else:
 
 # Create a CSV file for recording
 #csv_filename = "midi_record.csv"
-csv_filename = "./train_analysis/train_responses_"+subj_name+".csv"
+csv_filename = "./train_analysis/raw_keystrokes/raw_keystrokes_"+subj_name+".csv"
 csv_file = open(csv_filename, "w", newline="")
 csv_writer = csv.writer(csv_file)
 csv_writer.writerow(["trial_number", "notes_vector"])
@@ -74,8 +76,10 @@ csv_writer.writerow(["trial_number", "notes_vector"])
 # Welcome screen text
 welcome_text_lines = [
     "Welcome! In this experiment you will hear melodies and try to imitate them on the keyboard.",
-    "There will be 5 blocks with 8 sets of about 10 melodies per block.",
-    "You will be able to take a break after each set.",
+    "Try your best to play no more than 4 notes in your responses.",
+    "",
+    f"There will be {num_cycles} blocks with 8 sets of about 10 melodies per block.",
+    "You will be able to take a break or explore the keyboard after each set.",
     "Each block should take you 10-12 minutes.",
     "",
     "Press the space bar to begin."
@@ -133,7 +137,7 @@ prompt_rect = prompt_text.get_rect(center=(screen_width // 2, screen_height // 2
 trial_number = 1
 notes_vector = []
 
-num_cycles = 2
+
 curr_cycle = 0
 
 paused = False
