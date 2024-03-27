@@ -102,7 +102,7 @@ def resp_pd(file, exampleset):
     #make sure that the length of target column is same as length of results
     results = pd.read_csv(file)
 
-    results['subject'] = file.split('.')[1][-2:]
+    results['subject'] = file.split('.')[0][-2:]
     #participant responses are lists embedded in strings so we have to change it back to a list
     results['notes_vector'] = [ast.literal_eval(x) for x in results['notes_vector']] 
 

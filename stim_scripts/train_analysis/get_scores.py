@@ -9,6 +9,10 @@ import os
 
 from train_utils import *
 
+"""
+Simple file to get the scores and 
+"""
+
 #PARAMETERS
 #define the number of cycles in the training
 numcycles = 2
