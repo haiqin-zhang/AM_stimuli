@@ -7,7 +7,7 @@ import scipy
 import glob
 import os
 
-from train_utils import *
+from stim_scripts.train_analysis.utils.train_utils import *
 
 """
 Simple file to get the scores and 
