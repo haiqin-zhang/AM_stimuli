@@ -80,7 +80,7 @@ def calc_score(correct_notes, played_notes):
     exact_matches = np.sum(correct_array == played_array) #notes that were correct and in the correct position
     differences = np.abs(correct_array - played_array) #notes that were wrong: how far off are they?
 
-    partial_scores = [1 - 0.1 * x if x != 0 else 0 for x in differences]
+    partial_scores = [1 - 0.1 * x if x < 40 and x != 0 else 0 for x in differences]
 
     total_score = exact_matches + np.sum(partial_scores)
     
