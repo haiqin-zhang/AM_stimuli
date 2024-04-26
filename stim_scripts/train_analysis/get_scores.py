@@ -18,7 +18,7 @@ python get_scores.py
 By default skips the files that have already been processed. If you want to recalculate the scores for all files, set redo below to True
 """
 
-redo = False
+redo = True
 
 # PARAMETERS
 # Define the number of cycles in the training

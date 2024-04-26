@@ -84,7 +84,8 @@ def calc_score(correct_notes, played_notes):
 
     total_score = exact_matches + np.sum(partial_scores)
     
-    return total_score
+    #return total_score
+    return exact_matches
 
 """ 
 Setting up a dataframe with participant data 
