@@ -19,16 +19,24 @@ By default skips the files that have already been processed. If you want to reca
 """
 
 redo = True
+mode = 'real'
 
 # PARAMETERS
 # Define the number of cycles in the training
-numcycles = 2
-exampleset = midi_target('../raw_training_files_wurli/passive listening.mid')
+if mode == 'real':
+    numcycles = 2
+    exampleset = midi_target('../raw_training_files_wurli/passive listening.mid')
+    root_dir = "/Users/cindyzhang/Documents/M2/Audiomotor_Piano/AM_stimuli/stim_scripts/train_analysis/raw_keystrokes"
+    output_dir = "/Users/cindyzhang/Documents/M2/Audiomotor_Piano/AM_stimuli/stim_scripts/train_analysis/scores"
+
+#currently not in use
+elif mode == 'pilot':
+    numcycles = 5
+    exampleset = midi_target('../raw_training_files_wurli/passive listening.mid')
+    root_dir = "/Users/cindyzhang/Documents/M2/Audiomotor_Piano/AM_stimuli/stim_scripts/train_analysis/raw_keystrokes"
+    output_dir = "/Users/cindyzhang/Documents/M2/Audiomotor_Piano/AM_stimuli/stim_scripts/train_analysis/scores"
+
 fullset = exampleset * numcycles
-
-root_dir = "/Users/cindyzhang/Documents/M2/Audiomotor_Piano/AM_stimuli/stim_scripts/train_analysis/raw_keystrokes"
-output_dir = "/Users/cindyzhang/Documents/M2/Audiomotor_Piano/AM_stimuli/stim_scripts/train_analysis/scores"
-
 files = glob.glob(os.path.join(root_dir, '**', '*.csv'), recursive=True)
 
 for sub_file in files:
